@@ -4,41 +4,44 @@ namespace App;
 
 
 class MagicClass
-{
-    public function __destruct() {
-        echo "__construct\n";
-    }
+{ 
+    private $StaticField = [];
 
-    public function __construct() {
+    public function __destruct() {
         echo "__destruct\n";
     }
 
-    public function __call() {
+    public function __construct() {
+        echo "__construct\n";
+    }
+
+    public function __call($name, $arguments) {
         echo "__call\n";
     }
 
-    public function __callStatic() {
+    public static function __callStatic($name, $arguments) {
         echo "__callStatic\n";
     }
 
-    public function __get() {
+    public function __get($name) {
         echo "__get\n";
     }
 
-    public function __set() {
+    public function __set($name, $value) {
         echo "__set\n";
     }
 
-    public function __isset() {
+    public function __isset($name) {
         echo "__isset\n";
     }
 
-    public function __unset() {
+    public function __unset($name) {
         echo "__unset\n";
     }
 
     public function __sleep() {
         echo "__sleep\n";
+        return [];
     }
 
     public function __wakeup() {
@@ -47,21 +50,23 @@ class MagicClass
 
     public function __serialize() {
         echo "__serialize\n";
+        return [];
     }
 
-    public function __unserialize() {
+    public function __unserialize(array $data) {
         echo "__unserialize\n";
     }
 
     public function __toString() {
         echo "__toString\n";
+        return "string";
     }
 
-    public function __invoke() {
+    public function __invoke($param) {
         echo "__invoke\n";
     }
 
-    public function __set_state() {
+    public static function __set_state($properties) {
         echo "__set_state\n";
     }
 
@@ -69,7 +74,8 @@ class MagicClass
         echo "__clone\n";
     }
 
-    public function __debagInfo() {
+    public function __debugInfo() {
         echo "__debagInfo\n";
+        return [];
     }
 }
